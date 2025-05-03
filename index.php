@@ -4,19 +4,26 @@ $user = getenv('DB_USER');
 $pass = getenv('DB_PASS');
 $db   = getenv('DB_NAME');
 
-$mysqli = new mysqli($host, $user, $pass, $db);
-if ($mysqli->connect_error) {
-    die("Erro ao conectar ao banco: " . $mysqli->connect_error);
+$conn = mysqli_connect($host, $user, $pass, $db);
+if (!$conn) {
+    die("Erro ao conectar ao banco: " . mysqli_connect_error());
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nome = $mysqli->real_escape_string($_POST["nome"]);
-    $mensagem = $mysqli->real_escape_string($_POST["mensagem"]);
-    $mysqli->query("INSERT INTO recados (nome, mensagem) VALUES ('$nome', '$mensagem')");
+    $nome = mysqli_real_escape_string($conn, $_POST["nome"]);
+    $mensagem = mysqli_real_escape_string($conn, $_POST["mensagem"]);
+    $sql = "INSERT INTO recados (nome, mensagem) VALUES ('$nome', '$mensagem')";
+    mysqli_query($conn, $sql);
 }
 
-$result = $mysqli->query("SELECT nome, mensagem, data_hora FROM recados ORDER BY id DESC LIMIT 10");
-$recados = $result->fetch_all(MYSQLI_ASSOC);
+$sql = "SELECT nome, mensagem, data_hora FROM recados ORDER BY id DESC LIMIT 10";
+$result = mysqli_query($conn, $sql);
+$recados = [];
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $recados[] = $row;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
