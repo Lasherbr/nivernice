@@ -112,13 +112,19 @@ document.getElementById('form-recado').addEventListener('submit', function(e) {
 
     const form = this;
 
-    bootbox.alert({
-        title: "Obrigado!",
-        message: "Sua mensagem foi enviada com sucesso! 🎉",
-        callback: function () {
-            form.submit(); // Agora envia de verdade
+    bootbox.dialog({
+    title: "Obrigado!",
+    message: "Sua mensagem foi enviada com sucesso! 🎉",
+    buttons: {
+        ok: {
+            label: 'OK',
+            className: 'btn-orange',
+            callback: function() {
+                form.submit(); // Agora envia de forma confiável
+            }
         }
-    });
+    }
+});
 });
 </script>
 </body>
