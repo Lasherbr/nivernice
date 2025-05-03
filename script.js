@@ -1,13 +1,10 @@
+const carrossel = document.getElementById('carrossel');
 const slides = document.querySelectorAll('.slide');
 let current = 0;
 
-function showNextSlide() {
-    slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
-    slides[current].classList.add('active');
-}
-
 if (slides.length > 0) {
-    slides[current].classList.add('active');
-    setInterval(showNextSlide, 4000);
+    setInterval(() => {
+        current = (current + 1) % slides.length;
+        carrossel.style.transform = `translateX(-${current * 100}%)`;
+    }, 4000);
 }
