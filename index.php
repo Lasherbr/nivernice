@@ -112,7 +112,7 @@ document.getElementById('form-recado').addEventListener('submit', function(e) {
 
     const form = this;
 
-    bootbox.dialog({
+bootbox.dialog({
     title: "Obrigado!",
     message: "Sua mensagem foi enviada com sucesso! 🎉",
     buttons: {
@@ -120,11 +120,19 @@ document.getElementById('form-recado').addEventListener('submit', function(e) {
             label: 'OK',
             className: 'btn-orange',
             callback: function() {
-                form.submit(); // Agora envia de forma confiável
+                // Retoma carrossel (se quiser)
+                var car = bootstrap.Carousel.getInstance(document.getElementById('recadoCarousel'));
+                if (car) car.cycle();
+
+                form.submit();
             }
         }
     }
 });
+
+// Pausa o carrossel quando a modal aparece
+var car = bootstrap.Carousel.getInstance(document.getElementById('recadoCarousel'));
+if (car) car.pause();
 });
 </script>
 </body>
