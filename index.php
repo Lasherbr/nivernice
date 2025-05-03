@@ -9,11 +9,15 @@ if (!$conn) {
     die("Erro ao conectar ao banco: " . mysqli_connect_error());
 }
 
+$mensagem_enviada = false;
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nome = mysqli_real_escape_string($conn, $_POST["nome"]);
     $mensagem = mysqli_real_escape_string($conn, $_POST["mensagem"]);
     $sql = "INSERT INTO recados (nome, mensagem) VALUES ('$nome', '$mensagem')";
-    mysqli_query($conn, $sql);
+    if (mysqli_query($conn, $sql)) {
+        $mensagem_enviada = true;
+    }
 }
 
 $sql = "SELECT nome, mensagem, data_hora FROM recados ORDER BY id DESC LIMIT 10";
@@ -106,35 +110,15 @@ function toggleMusic() {
     const audio = document.getElementById('bg-music');
     audio.paused ? audio.play() : audio.pause();
 }
-
-document.getElementById('form-recado').addEventListener('submit', function(e) {
-    e.preventDefault(); // Interrompe envio imediato
-
-    const form = this;
-// Pausa o carrossel quando a modal aparece
-var car = bootstrap.Carousel.getInstance(document.getElementById('recadoCarousel'));
-if (car) car.pause();
     
-bootbox.dialog({
-    title: "Obrigado!",
-    message: "Sua mensagem foi enviada com sucesso! 🎉",
-    buttons: {
-        ok: {
-            label: 'OK',
-            className: 'btn-orange',
-            callback: function() {
-                // Retoma carrossel (se quiser)
-                var car = bootstrap.Carousel.getInstance(document.getElementById('recadoCarousel'));
-                if (car) car.cycle();
-
-                form.submit();
-            }
-        }
-    }
-});
-
-
-});
 </script>
+<?php if ($mensagem_enviada): ?>
+<script>
+    bootbox.alert({
+        title: "Obrigado!",
+        message: "Sua mensagem foi enviada com sucesso! 🎉"
+    });
+</script>
+<?php endif; ?>
 </body>
 </html>
