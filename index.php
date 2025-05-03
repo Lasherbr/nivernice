@@ -90,10 +90,13 @@ if ($result) {
     </div>
   </div>
 </div>
-<!-- Bootstrap JS (caso ainda não tenha) -->
+<!-- Bootstrap Bundle (já está certo) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Bootbox.js (usando CDN) -->
+<!-- jQuery (necessário para Bootbox) -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Bootbox.js -->
 <script src="https://cdn.jsdelivr.net/npm/bootbox@5.5.2/dist/bootbox.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -105,7 +108,7 @@ function toggleMusic() {
 }
 
 document.getElementById('form-recado').addEventListener('submit', function(e) {
-    e.preventDefault(); // Interrompe o envio
+    e.preventDefault(); // Interrompe envio imediato
 
     const form = this;
 
@@ -113,7 +116,7 @@ document.getElementById('form-recado').addEventListener('submit', function(e) {
         title: "Obrigado!",
         message: "Sua mensagem foi enviada com sucesso! 🎉",
         callback: function () {
-            form.submit(); // Envia o formulário de verdade após confirmar
+            form.submit(); // Agora envia de verdade
         }
     });
 });
