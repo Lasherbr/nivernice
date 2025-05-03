@@ -87,9 +87,11 @@ function toggleMusic() {
 
 <?php if (isset($_GET['ok'])): ?>
 <script>
-    bootbox.alert({
-        title: "Obrigado!",
-        message: "Sua mensagem foi enviada com sucesso! 🎉"
+    $(document).ready(function() {
+        bootbox.alert({
+            title: "Obrigado!",
+            message: "Sua mensagem foi enviada com sucesso! 🎉"
+        });
     });
 </script>
 <?php endif; ?>
