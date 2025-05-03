@@ -36,19 +36,23 @@ if ($result) {
 <div class="container">
     <img src="banner.png" class="top-banner" alt="Banner de 60 anos">
     <h1>Deixe seu recado carinhoso para a Nice!</h1>
+
+    <div class="carrossel-wrapper">
+        <div class="carrossel" id="carrossel">
+            <?php foreach ($recados as $recado): ?>
+                <div class="slide">
+                    <p class="msg">"<?php echo htmlspecialchars($recado['mensagem']); ?>"</p>
+                    <p class="autor">– <?php echo htmlspecialchars($recado['nome']); ?> (<?php echo $recado['data_hora']; ?>)</p>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
     <form method="POST">
         <textarea name="mensagem" placeholder="Sua mensagem" required></textarea>
         <input type="text" name="nome" placeholder="Seu nome" required>
         <button type="submit">Enviar</button>
     </form>
-    <div class="carrossel">
-        <?php foreach ($recados as $i => $recado): ?>
-            <div class="slide<?php echo $i === 0 ? ' active' : ''; ?>">
-                <p class="msg">"<?php echo htmlspecialchars($recado['mensagem']); ?>"</p>
-                <p class="autor">– <?php echo htmlspecialchars($recado['nome']); ?> (<?php echo $recado['data_hora']; ?>)</p>
-            </div>
-        <?php endforeach; ?>
-    </div>
 </div>
 <script src="script.js"></script>
 </body>
