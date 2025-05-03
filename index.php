@@ -42,7 +42,7 @@ if ($result) {
         <div class="carousel-inner">
             <?php foreach ($recados as $i => $recado): ?>
                 <div class="carousel-item <?php echo $i === 0 ? 'active' : ''; ?>">
-                    <div class="p-4 bg-light border-start border-4 border-orange rounded">
+                    <div class="slide-content">
                         <p class="msg">"<?php echo nl2br(htmlspecialchars($recado['mensagem'])); ?>"</p>
                         <p class="autor">– <?php echo htmlspecialchars($recado['nome']); ?> (<?php echo $recado['data_hora']; ?>)</p>
                     </div>
