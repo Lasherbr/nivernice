@@ -61,17 +61,35 @@ if ($result) {
     </div>
 
     <!-- Formulário responsivo -->
-    <form method="POST" class="bg-light p-4 rounded border border-orange">
-        <div class="mb-3">
-            <textarea name="mensagem" placeholder="Sua mensagem" required class="form-control" rows="4"></textarea>
-        </div>
-        <div class="mb-3">
-            <input type="text" name="nome" placeholder="Seu nome" required class="form-control">
-        </div>
-        <button type="submit" class="btn btn-orange w-100">Enviar</button>
-    </form>
+    <form id="form-recado" class="bg-light p-4 rounded border border-orange">
+    <div class="mb-3">
+        <textarea name="mensagem" placeholder="Sua mensagem" required class="form-control" rows="4"></textarea>
+    </div>
+    <div class="mb-3">
+        <input type="text" name="nome" placeholder="Seu nome" required class="form-control">
+    </div>
+    <button type="submit" class="btn btn-orange w-100">Enviar</button>
+</form>
 </div>
 
+
+    <!-- Modal de Agradecimento -->
+<div class="modal fade" id="agradecimentoModal" tabindex="-1" aria-labelledby="agradecimentoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-orange">
+      <div class="modal-header bg-orange text-white">
+        <h5 class="modal-title" id="agradecimentoModalLabel">Obrigado!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body text-center">
+        Sua mensagem foi enviada com sucesso! 🎉
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-orange" data-bs-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
