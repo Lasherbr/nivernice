@@ -13,8 +13,8 @@ body {
     border-color: #f94d00 !important;
 }
 .btn-orange {
-    background-color: #f94d00;
-    color: white;
+    background-color: #f94d00 !important;
+    color: white !important;
     border: 2px solid #f94d00;
     border-radius: 5px;
     padding: 10px 20px;
@@ -22,7 +22,7 @@ body {
     cursor: pointer;
 }
 .btn-orange:hover {
-    background-color: #e03f00;
+    background-color: #e03f00 !important;
     border-color: #e03f00;
 }
 
