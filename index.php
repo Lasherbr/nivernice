@@ -95,12 +95,23 @@ if ($result) {
 <script>
 function toggleMusic() {
     const audio = document.getElementById('bg-music');
-    if (audio.paused) {
-        audio.play();
-    } else {
-        audio.pause();
-    }
+    audio.paused ? audio.play() : audio.pause();
 }
+
+// Intercepta envio e mostra modal antes de enviar de verdade
+document.getElementById('form-recado').addEventListener('submit', function(e) {
+    e.preventDefault(); // Impede envio imediato
+
+    // Mostra modal
+    const modal = new bootstrap.Modal(document.getElementById('agradecimentoModal'));
+    modal.show();
+
+    // Ao fechar o modal, envia o formulário de verdade
+    const confirmar = document.querySelector('#agradecimentoModal .btn-orange');
+    confirmar.addEventListener('click', () => {
+        e.target.submit(); // Agora sim envia
+    }, { once: true }); // Só executa uma vez
+});
 </script>
 </body>
 </html>
