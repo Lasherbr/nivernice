@@ -37,7 +37,8 @@ if ($result) {
 <body>
 <div class="container py-4">
     <div class="text-center">
-        <img src="banner.png" class="img-fluid mb-3" alt="Banner de 60 anos" style="max-width: 320px;">
+        <img src="banner.png" class="img-fluid mb-3" style="max-width: 100%; height: auto;" alt="Banner de 60 anos">
+        
         <h1 class="text-orange">Deixe seu recado carinhoso para a Nice!</h1>
 
         <!-- Música -->
