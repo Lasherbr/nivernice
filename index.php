@@ -61,7 +61,7 @@ if ($result) {
     </div>
 
     <!-- Formulário responsivo -->
-    <form id="form-recado" class="bg-light p-4 rounded border border-orange">
+   <form id="form-recado" method="POST" class="bg-light p-4 rounded border border-orange">
     <div class="mb-3">
         <textarea name="mensagem" placeholder="Sua mensagem" required class="form-control" rows="4"></textarea>
     </div>
@@ -90,6 +90,12 @@ if ($result) {
     </div>
   </div>
 </div>
+<!-- Bootstrap JS (caso ainda não tenha) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Bootbox.js (usando CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/bootbox@5.5.2/dist/bootbox.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -98,19 +104,18 @@ function toggleMusic() {
     audio.paused ? audio.play() : audio.pause();
 }
 
-// Intercepta envio e mostra modal antes de enviar de verdade
 document.getElementById('form-recado').addEventListener('submit', function(e) {
-    e.preventDefault(); // Impede envio imediato
+    e.preventDefault(); // Interrompe o envio
 
-    // Mostra modal
-    const modal = new bootstrap.Modal(document.getElementById('agradecimentoModal'));
-    modal.show();
+    const form = this;
 
-    // Ao fechar o modal, envia o formulário de verdade
-    const confirmar = document.querySelector('#agradecimentoModal .btn-orange');
-    confirmar.addEventListener('click', () => {
-        e.target.submit(); // Agora sim envia
-    }, { once: true }); // Só executa uma vez
+    bootbox.alert({
+        title: "Obrigado!",
+        message: "Sua mensagem foi enviada com sucesso! 🎉",
+        callback: function () {
+            form.submit(); // Envia o formulário de verdade após confirmar
+        }
+    });
 });
 </script>
 </body>
