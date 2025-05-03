@@ -16,7 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $mensagem = mysqli_real_escape_string($conn, $_POST["mensagem"]);
     $sql = "INSERT INTO recados (nome, mensagem) VALUES ('$nome', '$mensagem')";
     if (mysqli_query($conn, $sql)) {
-        $mensagem_enviada = true;
+        header("Location: " . $_SERVER['PHP_SELF'] . "?ok=1");
+        exit;
     }
 }
 
@@ -84,7 +85,7 @@ function toggleMusic() {
 }
 </script>
 
-<?php if ($mensagem_enviada): ?>
+<?php if (isset($_GET['ok'])): ?>
 <script>
     bootbox.alert({
         title: "Obrigado!",
