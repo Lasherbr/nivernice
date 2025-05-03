@@ -34,12 +34,17 @@ if ($result) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container text-center mt-4">
-    <img src="banner.png" class="img-fluid mb-3" alt="Banner de 60 anos" style="max-width: 320px;">
-    <h1 class="text-orange">Deixe seu recado carinhoso para a Nice!</h1>
-<!-- Player de música -->
-<audio id="bg-music" src="musica.mp3" loop preload="auto"></audio>
-<button class="btn btn-orange my-2" onclick="toggleMusic()">Tocar música 🎵</button>
+<div class="container py-4">
+    <div class="text-center">
+        <img src="banner.png" class="img-fluid mb-3" alt="Banner de 60 anos" style="max-width: 320px;">
+        <h1 class="text-orange">Deixe seu recado carinhoso para a Nice!</h1>
+
+        <!-- Música -->
+        <audio id="bg-music" src="musica.mp3" loop preload="auto"></audio>
+        <button class="btn btn-orange my-3" onclick="toggleMusic()">Tocar música 🎵</button>
+    </div>
+
+    <!-- Carrossel responsivo -->
     <div id="recadoCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
         <div class="carousel-inner">
             <?php foreach ($recados as $i => $recado): ?>
@@ -53,10 +58,15 @@ if ($result) {
         </div>
     </div>
 
+    <!-- Formulário responsivo -->
     <form method="POST" class="bg-light p-4 rounded border border-orange">
-        <textarea name="mensagem" placeholder="Sua mensagem" required class="form-control mb-2" rows="4"></textarea>
-        <input type="text" name="nome" placeholder="Seu nome" required class="form-control mb-3">
-        <button type="submit" class="btn btn-orange">Enviar</button>
+        <div class="mb-3">
+            <textarea name="mensagem" placeholder="Sua mensagem" required class="form-control" rows="4"></textarea>
+        </div>
+        <div class="mb-3">
+            <input type="text" name="nome" placeholder="Seu nome" required class="form-control">
+        </div>
+        <button type="submit" class="btn btn-orange w-100">Enviar</button>
     </form>
 </div>
 
