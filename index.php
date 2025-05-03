@@ -111,7 +111,10 @@ document.getElementById('form-recado').addEventListener('submit', function(e) {
     e.preventDefault(); // Interrompe envio imediato
 
     const form = this;
-
+// Pausa o carrossel quando a modal aparece
+var car = bootstrap.Carousel.getInstance(document.getElementById('recadoCarousel'));
+if (car) car.pause();
+    
 bootbox.dialog({
     title: "Obrigado!",
     message: "Sua mensagem foi enviada com sucesso! 🎉",
@@ -130,9 +133,7 @@ bootbox.dialog({
     }
 });
 
-// Pausa o carrossel quando a modal aparece
-var car = bootstrap.Carousel.getInstance(document.getElementById('recadoCarousel'));
-if (car) car.pause();
+
 });
 </script>
 </body>
