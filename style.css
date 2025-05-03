@@ -92,6 +92,18 @@ textarea {
     padding: 20px 15px;
 }
 
+.bootbox .modal-content {
+    border: 2px solid #f94d00;
+}
+.bootbox .btn-primary {
+    background-color: #f94d00;
+    border-color: #f94d00;
+}
+.bootbox .btn-primary:hover {
+    background-color: #e03f00;
+    border-color: #e03f00;
+}
+
 @media (max-width: 768px) {
     .msg {
         font-size: 18px;
