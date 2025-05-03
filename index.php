@@ -31,29 +31,33 @@ if ($result) {
     <meta charset="UTF-8">
     <title>Niver Nice 60 Anos</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <img src="banner.png" class="top-banner" alt="Banner de 60 anos">
-    <h1>Deixe seu recado carinhoso para a Nice!</h1>
+<div class="container text-center mt-4">
+    <img src="banner.png" class="img-fluid mb-3" alt="Banner de 60 anos" style="max-width: 320px;">
+    <h1 class="text-orange">Deixe seu recado carinhoso para a Nice!</h1>
 
-    <div class="carrossel-wrapper">
-        <div class="carrossel" id="carrossel">
-            <?php foreach ($recados as $recado): ?>
-                <div class="slide">
-                    <p class="msg">"<?php echo htmlspecialchars($recado['mensagem']); ?>"</p>
-                    <p class="autor">– <?php echo htmlspecialchars($recado['nome']); ?> (<?php echo $recado['data_hora']; ?>)</p>
+    <div id="recadoCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <?php foreach ($recados as $i => $recado): ?>
+                <div class="carousel-item <?php echo $i === 0 ? 'active' : ''; ?>">
+                    <div class="p-4 bg-light border-start border-4 border-orange rounded">
+                        <p class="msg">"<?php echo nl2br(htmlspecialchars($recado['mensagem'])); ?>"</p>
+                        <p class="autor">– <?php echo htmlspecialchars($recado['nome']); ?> (<?php echo $recado['data_hora']; ?>)</p>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>
     </div>
 
-    <form method="POST">
-        <textarea name="mensagem" placeholder="Sua mensagem" required></textarea>
-        <input type="text" name="nome" placeholder="Seu nome" required>
-        <button type="submit">Enviar</button>
+    <form method="POST" class="bg-light p-4 rounded border border-orange">
+        <textarea name="mensagem" placeholder="Sua mensagem" required class="form-control mb-2" rows="4"></textarea>
+        <input type="text" name="nome" placeholder="Seu nome" required class="form-control mb-3">
+        <button type="submit" class="btn btn-orange">Enviar</button>
     </form>
 </div>
-<script src="script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
