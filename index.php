@@ -41,16 +41,13 @@ if ($result) {
 <body>
 <div class="container py-4">
     <div class="text-center">
-        <img src="banner.png" class="img-fluid mb-3" style="max-width: 100%; height: auto;" alt="Banner de 60 anos">
-        
+        <img src="banner.png" class="img-fluid mb-3" alt="Banner de 60 anos" style="max-width: 320px;">
         <h1 class="text-orange">Deixe seu recado carinhoso para a Nice!</h1>
 
-        <!-- Música -->
         <audio id="bg-music" src="musica.mp3" loop preload="auto"></audio>
         <button class="btn btn-orange my-3" onclick="toggleMusic()">Tocar música 🎵</button>
     </div>
 
-    <!-- Carrossel responsivo -->
     <div id="recadoCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
         <div class="carousel-inner">
             <?php foreach ($recados as $i => $recado): ?>
@@ -64,54 +61,29 @@ if ($result) {
         </div>
     </div>
 
-    <!-- Formulário responsivo -->
-   <form id="form-recado" method="POST" class="bg-light p-4 rounded border border-orange">
-    <div class="mb-3">
-        <textarea name="mensagem" placeholder="Sua mensagem" required class="form-control" rows="4"></textarea>
-    </div>
-    <div class="mb-3">
-        <input type="text" name="nome" placeholder="Seu nome" required class="form-control">
-    </div>
-    <button type="submit" class="btn btn-orange w-100">Enviar</button>
-</form>
+    <form method="POST" class="bg-light p-4 rounded border border-orange">
+        <div class="mb-3">
+            <textarea name="mensagem" placeholder="Sua mensagem" required class="form-control" rows="4"></textarea>
+        </div>
+        <div class="mb-3">
+            <input type="text" name="nome" placeholder="Seu nome" required class="form-control">
+        </div>
+        <button type="submit" class="btn btn-orange w-100">Enviar</button>
+    </form>
 </div>
 
-
-    <!-- Modal de Agradecimento -->
-<div class="modal fade" id="agradecimentoModal" tabindex="-1" aria-labelledby="agradecimentoModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content border-orange">
-      <div class="modal-header bg-orange text-white">
-        <h5 class="modal-title" id="agradecimentoModalLabel">Obrigado!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-      </div>
-      <div class="modal-body text-center">
-        Sua mensagem foi enviada com sucesso! 🎉
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-orange" data-bs-dismiss="modal">Ok</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Bootstrap Bundle (já está certo) -->
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- jQuery (necessário para Bootbox) -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-<!-- Bootbox.js -->
 <script src="https://cdn.jsdelivr.net/npm/bootbox@5.5.2/dist/bootbox.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 function toggleMusic() {
     const audio = document.getElementById('bg-music');
     audio.paused ? audio.play() : audio.pause();
 }
-    
 </script>
+
 <?php if ($mensagem_enviada): ?>
 <script>
     bootbox.alert({
