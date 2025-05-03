@@ -37,7 +37,9 @@ if ($result) {
 <div class="container text-center mt-4">
     <img src="banner.png" class="img-fluid mb-3" alt="Banner de 60 anos" style="max-width: 320px;">
     <h1 class="text-orange">Deixe seu recado carinhoso para a Nice!</h1>
-
+<!-- Player de música -->
+<audio id="bg-music" src="musica.mp3" loop preload="auto"></audio>
+<button class="btn btn-orange my-2" onclick="toggleMusic()">Tocar música 🎵</button>
     <div id="recadoCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
         <div class="carousel-inner">
             <?php foreach ($recados as $i => $recado): ?>
@@ -59,5 +61,16 @@ if ($result) {
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function toggleMusic() {
+    const audio = document.getElementById('bg-music');
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
+}
+</script>
 </body>
 </html>
